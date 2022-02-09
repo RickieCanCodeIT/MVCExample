@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+<header>
+    <h1>Welcome to Book!</h1>
+</header>
+<main>
+    <h1 th:text="${maus.title}">Title of book!</h1>
+    <h2 th:text="${maus.author}">I wrote this book!</h2>
+    <p th:text="'The ISBN is ' + ${maus.isbn}">The ISBN is 1234567890</p>
+    <p th:text="${maus.description}">Description!!!!!</p>
+</main>
+</body>
+</html>
