@@ -21,6 +21,9 @@ public class Book {
         this.description = description;
     }
 
+    private Book() {
+    }
+
     public String getTitle() {
         return title;
     }
