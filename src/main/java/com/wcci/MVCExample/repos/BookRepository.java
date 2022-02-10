@@ -1,4 +1,4 @@
-package com.wcci.MVCExample.Repos;
+package com.wcci.MVCExample.repos;
 
 import com.wcci.MVCExample.Book;
 import org.springframework.data.repository.CrudRepository;
