@@ -1,9 +1,9 @@
 package com.wcci.MVCExample.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 @Entity
 public class Author {
@@ -13,17 +13,25 @@ public class Author {
     private String name;
     private String publisher;
 
-    @ManyToOne
-    private Book book;
+//    @ManyToOne
+//    private Book book;
+
+    @ManyToMany
+    private Collection<Book> books;
 
     public Author() {
 
     }
 
-    public Author(String name, String publisher, Book book) {
+    public Author(String name, String publisher, Book...books) {
         this.name = name;
         this.publisher = publisher;
-        this.book = book;
+        this.books = Arrays.asList(books);
+        //this.books = new ArrayList<>();
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
     }
 
     public long getId() {
@@ -38,7 +46,7 @@ public class Author {
         return publisher;
     }
 
-    public Book getBook() {
-        return book;
+    public Collection<Book> getBooks() {
+        return books;
     }
 }

@@ -25,9 +25,11 @@ public class Populator implements CommandLineRunner {
         bookRepo.save(book3);
 
         Author author1 = new Author("Art Spiegelmann", "Randomhouse", book);
-        Author author2 = new Author("George R.R. Martin", "His publisher", book2);
+        Author author2 = new Author("George R.R. Martin", "His publisher", book, book2, book3);
         Author author3 = new Author("J.R.R. Tolkien", "People with a lot of money", book2);
         Author author4 = new Author("JD Salinger", "An old publisher", book3);
+
+//        author4.addBook(book2); Only when using addBook method
 
         authorRepo.save(author1);
         authorRepo.save(author2);

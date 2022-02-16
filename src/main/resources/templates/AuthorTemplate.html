@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+<header>
+    <h1>Welcome to Author!</h1>
+</header>
+<main>
+    <h1 th:text="${inAuthor.name}">Name of Author!</h1>
+    <p th:text="'Publisher: ' + ${inAuthor.publisher}">The publisher is 1234567890</p>
+    <ul>
+        <li th:each="book: ${inAuthor.books}"><a th:href="'/books/' + ${book.id}" th:text="${book.title}">Sample book name</a></li>
+    </ul>
+</main>
+</body>
+</html>

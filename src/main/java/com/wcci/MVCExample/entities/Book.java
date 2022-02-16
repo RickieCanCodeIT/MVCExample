@@ -1,9 +1,8 @@
 package com.wcci.MVCExample.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.hibernate.tuple.entity.EntityMetamodel;
+
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -15,7 +14,10 @@ public class Book {
     private String isbn;
     private String description;
 
-    @OneToMany(mappedBy = "book")
+//    @OneToMany(mappedBy = "book")
+//    private Collection<Author> authors;
+
+    @ManyToMany(mappedBy = "books")
     private Collection<Author> authors;
 
     public Book(String title, String isbn, String description) {
