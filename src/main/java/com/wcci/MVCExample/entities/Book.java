@@ -1,22 +1,25 @@
-package com.wcci.MVCExample;
+package com.wcci.MVCExample.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
 
 @Entity
 public class Book {
     @Id
     @GeneratedValue
-    public long id;
+    private long id;
     private String title;
-    private String author;
     private String isbn;
     private String description;
 
-    public Book(String title, String author, String isbn, String description) {
+    @OneToMany(mappedBy = "book")
+    private Collection<Author> authors;
+
+    public Book(String title, String isbn, String description) {
         this.title = title;
-        this.author = author;
         this.isbn = isbn;
         this.description = description;
     }
@@ -28,9 +31,6 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
 
     public String getIsbn() {
         return isbn;
@@ -38,5 +38,13 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Collection<Author> getAuthors() {
+        return authors;
     }
 }

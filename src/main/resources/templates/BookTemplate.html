@@ -9,10 +9,12 @@
     <h1>Welcome to Book!</h1>
 </header>
 <main>
-    <h1 th:text="${maus.title}">Title of book!</h1>
-    <h2 th:text="${maus.author}">I wrote this book!</h2>
-    <p th:text="'The ISBN is ' + ${maus.isbn}">The ISBN is 1234567890</p>
-    <p th:text="${maus.description}">Description!!!!!</p>
+    <h1 th:text="${inBook.title}">Title of book!</h1>
+    <p th:text="'The ISBN is ' + ${inBook.isbn}">The ISBN is 1234567890</p>
+    <p th:text="${inBook.description}">Description!!!!!</p>
+    <ul>
+        <li th:each="author: ${inBook.authors}"><a th:text="${author.name}">Sample author name</a></li>
+    </ul>
 </main>
 </body>
 </html>
