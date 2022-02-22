@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Book</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <header>
@@ -15,6 +16,26 @@
     <ul>
         <li th:each="author: ${inBook.authors}"><a th:href="'/authors/' + ${author.id}" th:text="${author.name}">Sample author name</a></li>
     </ul>
+    <br>
+    <hr>
+    <h2>Reviews</h2>
+    <ul>
+        <li th:each="review:${inBook.reviews}"><div class="review" th:text="${review}"></div></li>
+    </ul>
+
+    <form th:action="'/books/'+${inBook.id}" method="POST">
+        <input type="radio" id="bookOwner" name="OwnerStatus" value="book">
+        <label for="bookOwner">Owner</label><br>
+        <input type="radio" id="libraryUser" name="libraryUser" value="library">
+        <label for="libraryUser">Check out of Library</label><br>
+        <label for="review">Enter Review</label><br>
+<!--        <input type="text" id="review" name="review" placeholder="Great book ever"><br>-->
+        <textarea id="review" name="review" rows="4" cols="50"></textarea>
+
+
+        <input type="submit" value="Submit">
+    </form>
+
 </main>
 </body>
 </html>

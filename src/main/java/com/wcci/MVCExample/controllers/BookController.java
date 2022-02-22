@@ -4,8 +4,7 @@ import com.wcci.MVCExample.entities.Book;
 import com.wcci.MVCExample.repos.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.Optional;
@@ -21,11 +20,11 @@ public class BookController {
     @RequestMapping("/")
     public String showBooksTemplate(Model model) {
         model.addAttribute("books", bookRepo.findAll());
+        model.addAttribute("student","Avery");
         return "BooksTemplate";
     }
 
-
-    @RequestMapping("/books/{id}")
+    @GetMapping("/books/{id}")
     public String showBookTemplate(Model model, @PathVariable long id) {
         Optional<Book> tempBook = bookRepo.findById(id);
         if (tempBook.isPresent())
@@ -50,6 +49,13 @@ public class BookController {
             return "redirect:/";
         }
         return "BookTemplate";
+    }
+    @PostMapping("/books/{id}")
+    public String addReview(@PathVariable long id, @RequestParam String review){
+        Book mybook = bookRepo.findById(id).get();
+        mybook.addReview(review);
+        bookRepo.save(mybook);
+        return "redirect:/books/"+ id;
     }
 
     public void doErrorStuff(int a) throws Exception {
