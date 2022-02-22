@@ -5,7 +5,7 @@
     <title>Book</title>
 </head>
 <body>
-<nav th:insert="fragments.html::nav"></nav>
+<nav th:replace="fragments.html::nav"></nav>
 <header>
     <h1 th:text="'Welcome to '+${student}+'s book store'">Welcome to Books!</h1>
 </header>
@@ -16,6 +16,6 @@
             Title</a></li>
     </ul>
 </section>
-<footer th:insert="fragments.html::footer"></footer>
+<footer th:replace="fragments.html::footer"></footer>
 </body>
 </html>
