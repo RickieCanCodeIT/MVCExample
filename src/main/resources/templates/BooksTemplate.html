@@ -5,14 +5,17 @@
     <title>Book</title>
 </head>
 <body>
+<nav th:insert="fragments.html::nav"></nav>
 <header>
     <h1 th:text="'Welcome to '+${student}+'s book store'">Welcome to Books!</h1>
 </header>
-<section class = "book-collection">
+<section class="book-collection">
     <ul>
-<!--        <li th:each="myBook: ${books}"><a th:href="|/books/${myBook.id}|" th:text="${myBook.title}">Sample Book Title</a></li>-->
-        <li th:each="myBook: ${books}"><a th:href="'/books/' + ${myBook.id}" th:text="${myBook.title}">Sample Book Title</a></li>
+        <!--        <li th:each="myBook: ${books}"><a th:href="|/books/${myBook.id}|" th:text="${myBook.title}">Sample Book Title</a></li>-->
+        <li th:each="myBook: ${books}"><a th:href="'/books/' + ${myBook.id}" th:text="${myBook.title}">Sample Book
+            Title</a></li>
     </ul>
 </section>
+<footer th:insert="fragments.html::footer"></footer>
 </body>
 </html>
