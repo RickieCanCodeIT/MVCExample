@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.SQLException;
 import java.util.Optional;
 
 @Controller
@@ -31,7 +32,32 @@ public class BookController {
         {
             model.addAttribute("inBook", tempBook.get());
         }
+
+        //try catch to demonstrate throwing exceptions
+        try {
+            doErrorStuff(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //try catch to redirect on a failed repo query
+        try {
+            System.out.println(tempBook.get().getDescription());
+
+        }
+        catch (Exception ex) {
+            System.out.println("book ID " + id + " does not exist");
+            return "redirect:/";
+        }
         return "BookTemplate";
+    }
+
+    public void doErrorStuff(int a) throws Exception {
+        if (a == 0) {
+            //how to throw an exception manually
+            throw new Exception("You called the method that throws an error!");
+        }
+
     }
 
     @RequestMapping("/books/title/{title}")
